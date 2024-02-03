@@ -1,7 +1,7 @@
 """
 My personal plot style
 Project website: https://github.com/yymao/myplotstyle
-Copyright (c) 2023 Yao-Yuan Mao (yymao)
+Copyright (c) 2023-2024 Yao-Yuan Mao (yymao)
 """
 
 import cmasher
@@ -13,7 +13,7 @@ cmc = cmcrameri.cm
 plt = matplotlib.pyplot
 
 __all__ = ["plt", "cmr", "cmc", "FIG_WIDTH", "FIG_HEIGHT", "FIG_WIDTH_WIDE", "get_figsize", "legend_ordered"]
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 _margin = 0.22
 _width = 5.8
@@ -51,5 +51,24 @@ plt.rcParams.update({
 })
 
 
-def legend_ordered(axes, order, **kwargs):
-    return axes.legend(*[[hl[i] for i in order] for hl in axes.get_legend_handles_labels()], **kwargs)
+def legend_ordered(axes=None, order=None, **kwargs):
+    if order is None:
+        if axes is None:
+            axes = plt.gca()
+        if isinstance(axes, plt.Axes):
+            return axes.legend(**kwargs)
+        order = axes
+        axes = plt.gca()
+    handles, labels = axes.get_legend_handles_labels()
+    handles_new = []
+    labels_new = []
+    for i in order:
+        try:
+            h = handles[i]
+            l = labels[i]
+        except IndexError:
+            continue
+        else:
+            handles_new.append(h)
+            labels_new.append(l)
+    return axes.legend(handles_new, labels_new, **kwargs)
