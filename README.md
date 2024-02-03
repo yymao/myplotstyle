@@ -3,5 +3,5 @@
 ## Installation
 
 ```bash
-pip install https://github.com/yymao/myplotstyle/archive/master.zip
+pip install https://github.com/yymao/myplotstyle/archive/main.zip
 ```
