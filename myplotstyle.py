@@ -13,7 +13,7 @@ cmc = cmcrameri.cm
 plt = matplotlib.pyplot
 
 __all__ = ["plt", "cmr", "cmc", "FIG_WIDTH", "FIG_HEIGHT", "FIG_WIDTH_WIDE", "get_figsize", "legend_ordered"]
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 _margin = 0.22
 _width = 5.8
@@ -52,9 +52,9 @@ plt.rcParams.update({
 
 
 def legend_ordered(axes=None, order=None, **kwargs):
+    if axes is None:
+        axes = plt.gca()
     if order is None:
-        if axes is None:
-            axes = plt.gca()
         if isinstance(axes, plt.Axes):
             return axes.legend(**kwargs)
         order = axes
