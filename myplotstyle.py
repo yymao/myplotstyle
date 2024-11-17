@@ -13,7 +13,7 @@ cmc = cmcrameri.cm
 plt = matplotlib.pyplot
 
 __all__ = ["plt", "cmr", "cmc", "FIG_WIDTH", "FIG_HEIGHT", "FIG_WIDTH_WIDE", "get_figsize", "legend_ordered"]
-__version__ = "1.1.1"
+__version__ = "1.2.0"
 
 _margin = 0.22
 _width = 5.8
@@ -35,8 +35,8 @@ plt.rcParams.update({
     "figure.figsize": (FIG_WIDTH, FIG_HEIGHT),
     "mathtext.fontset": "stix",
     "font.family": "STIXGeneral",
-    "font.size": 15,
-    "axes.labelsize": 16,
+    "font.size": 16,
+    "axes.labelsize": "large",
     "legend.frameon": False,
     "legend.handletextpad": 0.5,
     "lines.markersize": 5,
